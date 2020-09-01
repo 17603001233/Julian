@@ -1,0 +1,10 @@
+<!--pages/login/login.wxml-->
+<view class="page login">
+  <form class="login-form" bindsubmit="login">
+    <mp-cell><input name="username" placeholder="请输入你的手机号码" value="{{loginForm.username}}"></input></mp-cell>
+    <mp-cell><input name="password" placeholder="输入密码" type="password" value="{{loginForm.password}}"></input></mp-cell>
+    <button class="btn" type="primary" form-type="submit"> 登录 </button>
+    <button class="btn" type="default" bindtap="toRegister"> 注册 </button>
+    <!-- <button class="btn" type="default" mini bindtap="toInstruction"> 阅读用户使用协助 </button> -->
+  </form>
+</view>

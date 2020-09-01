@@ -1,0 +1,112 @@
+/* pages/main/main.wxss */
+@import '../../app.wxss';
+
+.search-bar {
+  width: 100%;
+}
+.panel .location {
+  display: flex;
+  flex-wrap: nowrap!important;
+  overflow-x: auto;
+}
+
+.friend+.friend {
+  margin: 0 0 0 1rem;
+}
+
+.friend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend .badge {
+  position: absolute;
+  margin-top: -3.6rem;
+  left: 3.6rem;
+}
+
+.friend .img {
+  height: 3.6rem;
+  width: 3.6rem;
+  border-radius: 50%;
+}
+
+.friend .name {
+  font-family: PingFangSC-Medium;
+  font-size: 14px;
+  color: #899A96;
+  letter-spacing: 0;
+}
+
+.panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+.app-view {
+  background: #EDF1F9;
+  border-radius: 9px;
+  border-radius: 9px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 10px;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.app-view .app-view-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 22px;
+  color: #1A3B34;
+  letter-spacing: 0;
+  width: calc(50% - 1.4rem);
+  text-align: center;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.app-view .app-view-icon {
+  height: 2.8rem;
+  width: 2.8rem;
+}
+
+.app-view .app-view-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-view .app-view-text {
+  font-family: PingFangSC-Medium;
+  font-size: 14px;
+  color: #77807D;
+  letter-spacing: 0;
+  width: calc(50% - 1.4rem);
+  text-align: center;
+}
