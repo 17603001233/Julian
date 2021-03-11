@@ -1,0 +1,9 @@
+/* pages/friends/friends.wxss */
+@import '../index/index.wxss';
+.friend {
+  justify-content: start;
+  overflow-y: auto;
+}
+.friend-cell + .friend-cell {
+  margin: 10px 0 0 0;
+}

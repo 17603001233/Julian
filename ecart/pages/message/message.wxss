@@ -1,0 +1,16 @@
+/* pages/message/message.wxss */
+@import '../index/index.wxss';
+
+.message {
+  justify-content: start;
+}
+.message>.img {
+  height: 320px;
+}
+.message .notice {
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #BED8CE;
+  letter-spacing: 0;
+  margin: 20px 0 0 0;
+}

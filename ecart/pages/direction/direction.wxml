@@ -1,0 +1,4 @@
+<!--pages/direction.wxml-->
+<map subkey="{{key}}" longitude="{{longitude}}" latitude="{{latitude}}" polyline="{{polyline}}"
+      markers="{{markers}}" covers="{{covers}}" show-location show-compass show-scale bindtap="tapMap">
+</map>

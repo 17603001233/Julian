@@ -1,0 +1,2 @@
+<!--pages/instruction/instruction.wxml-->
+<web-view src="https://www.haichuang-tech.com:8082/webapi/index/privacy?appName=%E6%89%8B%E6%9C%BA%E5%AE%9A%E4%BD%8D%E6%89%BE%E4%BA%BA&company=%E4%B8%AA%E4%BA%BA%E7%9A%84"></web-view>
