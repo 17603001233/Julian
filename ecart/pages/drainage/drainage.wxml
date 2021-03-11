@@ -1,0 +1,4 @@
+<!--pages/drainage/drainage.wxml-->
+<view class="container">
+  <a>{{userInfo.config.wxAppid || 'www.baidu.com'}}</a>
+</view>

@@ -1,0 +1,12 @@
+<!--components/assistant/assistant.wxml-->
+<view class="panel-content">
+  <block wx:for="{{applicationList}}" wx:key="index">
+    <view class="app-view" data-path="{{item.path}}" bindtap="toDetail">
+      <text class="app-view-title"> {{item.title}} </text>
+      <view class="app-view-content">
+        <image class="app-view-icon" src="{{item.icon}}"></image>
+        <text class="app-view-text" src="{{item.content}}"></text>
+      </view>
+    </view>
+  </block>
+</view>
