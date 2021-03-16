@@ -16,11 +16,28 @@ Page({
       application: '',
       devicePlatform: '',
       password: '',
-      username: ''
+      username: '',
+      agreement: false
+    },
+    error: {
+      username: false,
+      password: false
     }
   },
 
+  // 选择同意用户与使用协助
+  onChange: function (e) {
+    this.setData({ 'agreement': e.detail });
+  },
+
+  toPravicy: function() {
+    wx.navigateTo({ url: '../instruction/instruction?flag=privacy' })
+  },
+
   register: function (e) {
+    this.setData({ 'error.username': !e.detail.value.username, 'error.password': !e.detail.value.password });
+    if (this.data.error.username || this.data.error.password) return;
+    if (!this.data.agreement) return wx.showToast({ title: '请同意用户与使用协助', icon: 'none' });
     this.setData({ // 设置注册基本信息
       'registerForm.appPackage': app.globalData.basicInfo.appPackage,
       'registerForm.appVersion': app.globalData.basicInfo.appVersion,

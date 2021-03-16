@@ -1,19 +1,17 @@
 {
   "pages": [
     "pages/main/main",
-    "pages/login/login",
+    "pages/register/register",
     "pages/index/index",
+    "pages/login/login",
     "pages/map/map",
-    "pages/logs/logs",
     "pages/instruction/instruction",
     "pages/location/location",
     "pages/record/record",
-    "pages/register/register",
     "pages/friends/friends",
-    "pages/message/message",
-    "pages/weather/weather",
     "pages/direction/direction",
-    "pages/virus/virus"
+    "pages/weather/weather",
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,27 +19,23 @@
     "navigationBarTitleText": "好友追踪",
     "navigationBarTextStyle": "black"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/main/main",
         "iconPath": "./images/note.png",
-        "selectedIconPath": "./images/note.png",
+        "selectedIconPath": "./images/note-selected.png",
         "text": "首页"
-      },
-      {
+      }, {
         "pagePath": "pages/map/map",
         "iconPath": "./images/map.png",
-        "selectedIconPath": "./images/map.png",
+        "selectedIconPath": "./images/map-selected.png",
         "text": "地图"
-      },
-      {
+      }, {
         "pagePath": "pages/index/index",
-        "iconPath": "./images/default-headshot.png",
-        "selectedIconPath": "./images/default-headshot.png",
-        "text": "个人中心"
+        "iconPath": "./images/mine.png",
+        "selectedIconPath": "./images/mine-selected.png",
+        "text": "我的"
       }
     ]
   },
@@ -54,7 +48,16 @@
     "mp-icon": "weui-miniprogram/icon/icon",
     "mp-search-bar": "weui-miniprogram/searchbar/searchbar",
     "mp-badge": "weui-miniprogram/badge/badge",
-    "mp-dialog": "weui-miniprogram/dialog/dialog"
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-image": "@vant/weapp/image/index"
   },
   "useExtendedLib": {
     "kbone": true,

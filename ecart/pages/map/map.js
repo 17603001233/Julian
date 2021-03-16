@@ -28,7 +28,7 @@ Page({
             desc: '描述：' + data[i].desc + '\n', 
             business: '商圈：' + data[i].business 
         } 
-    }); 
+    });
   },
 
   tapMap: function (data) {

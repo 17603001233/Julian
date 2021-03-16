@@ -21,15 +21,16 @@ Page({
   },
 
   // 处理好友请求
-  dealRequest: function (e) {
+  dealRequest: function(e) {
     console.log(e)
     wx.showModal({
       title: '处理请求',
-      content: '是否同意该好友的定位申请',
+      content: '是否同意该好友的定位申请,同意后对方可查看您的历史位置',
       showCancel: true,
       cancelText: '拒绝',
       confirmText: '同意',
-      cancelColor: 'cancelColor',
+      cancelColor: '#000000',
+      confirmColor: '#576B95',
       success: res => {
         this.setData({ 'dealParam.friendRequestId': e.currentTarget.dataset.id })
         if (res.confirm) return this.sendRequest(true)
@@ -39,7 +40,7 @@ Page({
   },
 
   // 发送处理好友请求结果
-  sendRequest: function (flag) {
+  sendRequest: function(flag) {
     this.setData({ 'dealParam.agree': flag })
     console.log(this.data.dealParam)
     $http.askFor($api.friend.dealRequest, this.data.dealParam).then(res => {
@@ -52,75 +53,75 @@ Page({
   },
 
   // 获取好友请求通知
-  getFriendRequest: function () {
+  getFriendRequest: function() {
     $http.askFor($api.friend.queryRequest, this.data.queryParam).then(res => {
       this.setData({ list: res.data.pageInfo.list })
     })
   },
 
   // 获取用户信息
-  getUserInfo: function (cb) {
+  getUserInfo: function(cb) {
     wx.getStorage({
       key: 'userInfo'
     }).then(info => {
       this.setData({ 'queryParam.toUsername': info.data.username })
       if (cb) cb()
-    }).catch(() => wx.navigateTo({ url: '../login/login' }) )
+    }).catch(() => wx.navigateTo({ url: '../login/login' }))
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     this.getUserInfo(() => { this.getFriendRequest() })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

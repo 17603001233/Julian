@@ -46,16 +46,16 @@
   padding: 8px;
 }
 .app-view {
-  background: #EDF1F9;
+  background: #fff;
+  box-shadow: 0px 2px 6px lightgray;
   border-radius: 9px;
-  border-radius: 9px;
-  padding: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: 0 0 10px 0;
-  padding: 10px;
+  padding: 20px;
+  font-weight: 800;
 }
 
 .panel .panel-content {
@@ -78,10 +78,9 @@
 
 .app-view .app-view-title {
   font-family: PingFangSC-Semibold;
-  font-size: 22px;
+  font-size: 16px;
   color: #1A3B34;
   letter-spacing: 0;
-  width: calc(50% - 1.4rem);
   text-align: center;
 }
 

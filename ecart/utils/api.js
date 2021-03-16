@@ -29,7 +29,7 @@ module.exports = {
       tokenFree: true
     },
     // 获取用户隐私
-    getAgreement: {
+    getPravicy: {
       path: '/index/privacy',
       method: 'GET',
       tokenFree: true
@@ -88,5 +88,21 @@ module.exports = {
       path: '/location/queryFriendLocationRecord',
       method: 'GET'
     }
+  },
+  goods:{
+    path: '/product/queryProduct',
+    method: 'GET'
+  },
+  // 支付
+  payfor:{
+    createPay:{
+      path: '/order/createOrder',
+      method: 'post'
+    }
+  },
+  // 登陆传给后台位置信息
+  findConfigAddress:{
+    path: '/config/findConfigAddress',
+    method: 'post'
   }
 }

@@ -20,9 +20,8 @@ Page({
     }
   },
 
-  getAgreement: function () {
-    $http.askFor($api.index.getAgreement, this.data.queryParam, res => {
-      console.log(res)
+  getPravicy: function () {
+    $http.askFor($api.index.getPravicy, this.data.queryParam, res => {
     })
   },
 
@@ -30,7 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getAgreement()
+    this.getPravicy();
   },
 
   /**

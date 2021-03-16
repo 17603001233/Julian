@@ -1,10 +1,10 @@
 <!--pages/main/main.wxml-->
 <view class="page">
+  <official-account></official-account>
   <!-- <mp-search-bar ext-class="search-bar" bindselectresult="selectResult" bindblur="getFriendList" search="{{search}}" placeholder="定位手机"></mp-search-bar> -->
-  <mp-search-bar ext-class="search-bar" bindblur="sendFriendRequest" placeholder="定位手机"></mp-search-bar>
   <view class="panel">
     <view class="panel-header">
-      <text class="title"> 已定位 </text>
+      <text class="title"> 我的好友 </text>
       <text class="subtitle" bindtap="toFriends"> 更多 </text>
     </view>
     <view class="panel-content location">
@@ -13,22 +13,30 @@
         <mp-badge wx:if="{{requestNumber!==0}}" extClass="badge" content="{{requestNumber}}"></mp-badge>
         <text class="name"> 通知 </text>
       </view>
+      <view class="friend" bindtap="modalinput">
+        <image class="img" src="../../images/friend.png"></image>
+        <mp-badge wx:if="{{requestNumber!==0}}" extClass="badge" content="{{requestNumber}}"></mp-badge>
+        <text class="name">添加好友</text>
+      </view>
       <view class="friend" wx:for="{{friendList}}" wx:key="index" data-username="{{item.friendUsername}}" bindtap="locateFriend">
         <image class="img" src="../../images/default-headshot.png"></image>
         <text class="name"> {{ item.remark || item.friendUsername }} </text>
       </view>
+      <modal hidden="{{hiddenmodalput}}" title="请输入对方手机号" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+        <input value="{{friendNumber}}" bindinput="friendPhone" type='text' placeholder="请输入对方手机号码" auto-focus/>  
+      </modal> 
     </view>
   </view>
   <view class="panel">
     <view class="panel-header">
-      <text class="title"> 家庭助手 </text>
+      <text class="title"> 我的助手 </text>
       <!-- <text class="subtitle" bindtap="toAssistant"> 更多 </text> -->
     </view>
     <view class="panel-content">
       <block wx:for="{{applicationList}}" wx:key="index">
         <view class="app-view" data-app="{{item}}" bindtap="{{item.bindtap || 'toDetail'}}">
           <text class="app-view-title"> {{item.title}} </text>
-          <image class="app-view-icon" src="{{item.icon}}"></image>
+          <!-- <image class="app-view-icon" src="{{item.icon}}"></image> -->
           <text class="app-view-text"> {{ item.content }} </text>
         </view>
       </block>

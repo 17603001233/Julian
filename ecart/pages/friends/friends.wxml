@@ -1,12 +1,12 @@
 <!--pages/friends/friends.wxml-->
 <view class="friend container">
   <view class="friend-cell" wx:for="{{friendList}}" wx:key="index">
-    <view class="info">
+    <view class="friend-cell-info">
       <image class="img" src="../../images/default-headshot.png" data-friend="{{item}}" bindtap="locateFriend"></image>
       <text class="name" data-friend="{{item}}" bindtap="changeFriendRemark"> {{ item.remark || item.friendUsername }} </text>
       <mp-icon icon="pencil" class="icon" data-friend="{{item}}" bindtap="changeFriendRemark"></mp-icon>
+      <mp-icon icon="delete" class="icon" data-friend="{{item}}" bindtap="deleteFriend"></mp-icon>
     </view>
-    <mp-icon icon="delete" class="icon" data-friend="{{item}}" bindtap="deleteFriend"></mp-icon>
   </view>
   <mp-dialog title="修改好友备注" show="{{dialogShow}}" bindclose="bindclose" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
     <input placeholder="请输入好友备注" focus bindinput="bindinput"></input>

@@ -1,10 +1,13 @@
 <!--pages/message/message.wxml-->
 <view class="container message">
   <block wx:if="{{list.length !== 0}}">
-    <view class="friend-cell" wx:for="{{list}}" data-id="{{item.id}}" wx:key="index" bindtap="dealRequest">
-      <image class="img" src="../../images/default-headshot.png"></image>
-      <text class="name"> {{ item.fromUsername }} </text>
-      <icon icon="arrow"></icon>
+    <view class="friend-cell" wx:for="{{list}}" data-id="{{item.id}}" wx:key="index">
+      <view class="friend-cell-info">
+        <image class="img" src="../../images/default-headshot.png"></image>
+        <text class="name"> {{ item.fromUsername }} </text>
+        <text class="button" bindtap="dealRequest" data-id="{{item.id}}"> 同意 </text>
+      </view>
+      <text class="desc"> 该用户发来好友的请求，请您尽快处理！ </text>
     </view>
   </block>
   <block wx:else>

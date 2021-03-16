@@ -1,11 +1,14 @@
 <!--pages/register/register.wxml-->
 <view class="page login">
   <form class="login-form" bindsubmit="register">
-    <mp-cell><input placeholder="请输入用户名" name="username" type="number" value="{{registerForm.username}}"></input></mp-cell>
-    <mp-cell><input placeholder="请输入密码" name="password" type="password" value="{{registerForm.password}}"></input></mp-cell>
-    <button class="btn" type="primary" form-type="submit"> 注册 </button>
-    <!-- <checkbox value="{{agreement}}"> 同意我们的<text>用户协助</text> </checkbox> -->
-    <!-- <button class="btn" type="default" mini bindtap="toInstruction"> 阅读用户使用协助 </button> -->
+    <van-cell-group>
+      <van-field size="large" name="username" type="number" value="{{ registerForm.username }}" placeholder="请输入你的手机号码" border="{{ false }}" error="{{error.username}}"/>
+      <van-field size="large" name="password" password value="{{ registerForm.password }}" placeholder="请输入密码" border="{{ false }}" error="{{error.password}}" />
+    </van-cell-group>
+    <van-button size="large" round form-type="submit" color="linear-gradient(to right, #F03C69, #EB893F)"> 注册 </van-button>
+    <van-checkbox value="{{ agreement }}" bind:change="onChange" style="margin: 20px;color: #8C8C8C;" checked-color="#EE525C">
+      同意<text catchtap="toPravicy">隐私政策</text>与<text catchtap="toAgreement">使用协助</text>
+      <!-- <text style="color: #8C8C8C;"> -->
+    </van-checkbox>
   </form>
 </view>
-

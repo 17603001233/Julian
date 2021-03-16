@@ -19,17 +19,20 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // console.log(res)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // http.askFor(api.user.code2Session, {
-        //   appid: this.globalData.accountInfo.appid,
-        //   secret: this.globalData.accountInfo.secret,
-        //   jsCode: res.code
-        // }, res => {
-        //   console.log(res)
-        // })
+        http.askFor(api.user.code2Session,{
+          appid: this.globalData.accountInfo.appid,
+          secret: this.globalData.accountInfo.secret,
+          jsCode: res.code}).then(res => {
+          wx.setStorage({
+            data: res.data.map,
+            key: 'users',
+          })
+          // console.log(res)
+        })
       }
     })
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -68,7 +71,7 @@ App({
     wxUserInfo: null // 微信登录用户数据
   },
   qqmapsdk: new QQMapWX({ key: 'KZFBZ-7MI6S-HZ7OT-6OBDS-Z4N5Z-4RBNL'}),
-  BMap: new bMap.BMapWX({ ak: '1vXiHGBuYGZr54vEGFDllwyhVAsOV7oC' }),
+  BMap: new bMap.BMapWX({ ak: 'rrMuufEL4IjQnkC9XpylM9iA3ul1wlHq' }),
   http: http,
   api: api
 })

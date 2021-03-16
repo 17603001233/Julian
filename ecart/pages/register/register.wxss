@@ -1,2 +1,7 @@
 /* pages/register/register.wxss */
-@import '../login/login.wxss'
+@import '../login/login.wxss';
+.login-form {
+  width: 18rem;
+  position: absolute;
+  top: 10rem;
+}

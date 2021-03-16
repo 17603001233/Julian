@@ -1,23 +1,41 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
+<view class="container page">
+  <!-- <view class="userinfo">
+    <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 获取手机号码 </button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
+  </view> -->
+  <view class="user-center">
+    <image src="{{userInfo.image}}"></image>
+    <view>
+      <view class="info-cell">
+        <text slot="title">姓名</text>
+        <text>{{userInfo.name}}</text>
+      </view>
+      <view class="info-cell" bindtap="toPravicy">
+        <text slot="title">隐私政策</text>
+        <van-icon name="arrow" />
+      </view>
+      <view class="info-cell" bindtap="toAgreement">
+        <text slot="title">用户协助</text>
+        <van-icon name="arrow" />
+      </view>
+      <!-- <view class="info-cell">
+        <text slot="title">性别</text>
+        <text>{{userInfo.sex}}</text>
+      </view>
+      <view class="info-cell">
+        <text slot="title">年龄</text>
+        <text>{{userInfo.age}}</text>
+      </view> -->
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <!-- <text data-path="regeocoding" bindtap="toPage"> regeocoding </text>
+  <text data-path="geocoding" bindtap="toPage"> geocoding </text>
+  <text data-path="search" bindtap="toPage"> search </text>
+  <text data-path="suggestion" bindtap="toPage"> suggestion </text> -->
+  <van-button class="logout-btn" size="large" bindtap="logout" form-type="submit" color="linear-gradient(to right, #F03C69, #EB893F)"> 退出登录 </van-button>
 </view>

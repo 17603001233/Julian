@@ -1,10 +1,13 @@
 <!--pages/login/login.wxml-->
 <view class="page login">
+  <van-image src="/images/login-bg.png" class="login-img" width="100%" height="100%" fit="cover"/>
   <form class="login-form" bindsubmit="login">
-    <mp-cell><input name="username" placeholder="请输入你的手机号码" value="{{loginForm.username}}"></input></mp-cell>
-    <mp-cell><input name="password" placeholder="输入密码" type="password" value="{{loginForm.password}}"></input></mp-cell>
-    <button class="btn" type="primary" form-type="submit"> 登录 </button>
-    <button class="btn" type="default" bindtap="toRegister"> 注册 </button>
-    <!-- <button class="btn" type="default" mini bindtap="toInstruction"> 阅读用户使用协助 </button> -->
+    <van-cell-group>
+      <van-field size="large" name="username" type="number" value="{{ loginForm.username }}" placeholder="请输入你的手机号码" border="{{ false }}" error="{{error.username}}" />
+      <van-field size="large" name="password" password value="{{ loginForm.password }}" placeholder="请输入密码" border="{{ false }}" error="{{error.password}}" />
+    </van-cell-group>
+    <van-button size="large" round form-type="submit" color="linear-gradient(to right, #F03C69, #EB893F)"> 登录 </van-button>
+    <van-button size="large" round plain bindtap="toRegister" class="red-border-btn"> 注册 </van-button>
+    <!-- <a class="btn" type="default" mini bindtap="toInstruction"> 阅读用户使用协助 </a> -->
   </form>
 </view>

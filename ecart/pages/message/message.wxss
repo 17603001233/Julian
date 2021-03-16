@@ -3,6 +3,7 @@
 
 .message {
   justify-content: start;
+  background-color: #fff;
 }
 .message>.img {
   height: 320px;
