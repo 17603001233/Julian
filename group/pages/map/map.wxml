@@ -1,0 +1,26 @@
+<!--pages/map.wxml-->
+<view class="map-view">
+  <map subkey="{{key}}" longitude="{{longitude}}" latitude="{{latitude}}" bindmarkertap="makertap"
+      markers="{{markers}}" covers="{{covers}}" show-location show-compass show-scale bindtap="tapMap">
+    <view class="map-control">
+      <!-- <mp-search-bar ext-class="search-bar" placeholder="请输入想去的地方" bindblur="showSearchInfo"></mp-search-bar> -->
+      <view class="cover-bottom-left">
+        <button size="mini"><mp-icon icon="pencil" color="black" size="{{25}}" bindtap="toLocation"></mp-icon></button>
+        <button size="mini"><mp-icon icon="location" color="black" size="{{25}}" bindtap="getLocation"></mp-icon></button>
+      </view>
+    </view>
+  </map>
+  <!-- <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap">
+    <view class="map-control">
+      <view class="cover-bottom-left">
+        <button size="mini"><mp-icon icon="pencil" color="black" size="{{25}}" bindtap="toLocation"></mp-icon></button>
+        <button size="mini"><mp-icon icon="location" color="black" size="{{25}}" bindtap="getLocation"></mp-icon></button>
+      </view>
+    </view>
+    <view class="rgc_info"> 
+      <text>{{rgcData.address}}</text> 
+      <text>{{rgcData.desc}}</text> 
+      <text>{{rgcData.business}}</text> 
+    </view>
+  </map> -->
+</view>

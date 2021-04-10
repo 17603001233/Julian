@@ -1,0 +1,65 @@
+/* components/assistant/assistant.wxss */
+@import '../../app.wxss';
+
+
+.panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+.app-view {
+  height: 5rem;
+  background: #EDF1F9;
+  border-radius: 9px;
+  border-radius: 9px;
+  width: calc(50% - 20px);
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.app-view:nth-child(odd) {
+  margin: 0 8px 0 0;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.app-view:nth-child(even) {
+  margin: 0 0 8px 0;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.app-view .app-view-title {
+  font-family: PingFangSC-Medium;
+  font-size: 14px;
+  color: #77807D;
+  letter-spacing: 0;
+}
+
+.panel .panel-content {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.app-view .app-view-icon {
+  height: 2.8rem;
+  width: 2.8rem;
+}
