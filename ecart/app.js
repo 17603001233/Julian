@@ -60,7 +60,7 @@ App({
       secret: 'a36a336f238b33cd783fb6914d74dca0'
     },
     basicInfo: { // 基本配置
-      appPackage: 'wx.hc.friendtrack',
+      appPackage: 'wx.ecart.friendtrack',
       appVersion: '1.0.0',
       agencyChannel: 'miniProgram',
       appMarket: 'miniProgram',

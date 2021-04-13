@@ -15,7 +15,7 @@ Page({
     rgcData: {},
     loginForm: {
       appMarket: '',
-      appPackage: 'wx.hc.friendtrack',
+      appPackage: 'wx.ecart.friendtrack',
       appVersion: '1.0.0',
       password: '',
       username: ''
@@ -73,17 +73,17 @@ Page({
       "address": this.data.address,
       "agencyChannel": "miniProgram",
       "appMarket": "miniProgram",
-      "appPackage": "wx.hc.friendtrack",
+      "appPackage": "wx.ecart.friendtrack",
       "appVersion": "1.0.0",
       "application": "sjdw"
     }
     $http.askFor($api.findConfigAddress, add).then(res => {
       console.log(res)
-      // if (res.data.configAddress.isCharge == '0') {
+      if (res.data.configAddress.isCharge == '0') {
         var userInfo = wx.getStorageSync('user');
         userInfo.isCharge = 0
         wx.setStorageSync('userInfo', userInfo);
-      // }
+      }
     })
   },
   // 获取当前用户位置信息

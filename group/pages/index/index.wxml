@@ -22,5 +22,6 @@
   <text data-path="geocoding" bindtap="toPage"> geocoding </text>
   <text data-path="search" bindtap="toPage"> search </text>
   <text data-path="suggestion" bindtap="toPage"> suggestion </text> -->
-  <button class="login-out" type="warn" plain bindtap="logout"> 退出登录 </button>
+  <button class="login-out" type="warn" plain bindtap="logout" wx:if="{{userInfo.name}}"> 退出登录 </button>
+  <button class="login-out" type="primary" plain bindtap="toPage" data-path="login" wx:else> 去登录 </button>
 </view>

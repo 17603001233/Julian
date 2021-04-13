@@ -30,12 +30,10 @@ Page({
   },
 
   onShow: function() {
-    wx.getStorage({
-      key: 'userInfo',
-    }).then(info => {
+    wx.getStorage({ key: 'userInfo' }).then(info => {
       let userInfo = info.data
       this.setData({ 'userInfo.name': userInfo.username })
-    })
+    }).catch(error => {})
   },
 
   onLoad: function() {

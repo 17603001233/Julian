@@ -53,7 +53,10 @@ Page({
   //点击按钮痰喘指定的hiddenmodalput弹出框  
   modalinput: function() {
     var userInfo = wx.getStorageSync('userInfo')
-
+    if (userInfo.config.isCharge == 1 && userInfo.productFeature == null) {
+      this.goodsDetail()
+      return;
+    }
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput
     })
@@ -242,7 +245,6 @@ Page({
   getWeather: function() {
     app.BMap.weather({
       success: data => {
-        console.log(data);
         let weatherData = data.currentWeather[0]
         weatherData = '城市：' + weatherData.currentCity + '\n' + 'PM2.5：' + weatherData.pm25 + '\n' + '日期：' + weatherData.date + '\n' + '温度：' + weatherData.temperature + '\n' + '天气：' + weatherData.weatherDesc + '\n' + '风力：' + weatherData.wind + '\n'
         console.log(weatherData)
@@ -282,9 +284,109 @@ Page({
    */
   onLoad: function(options) {
     this.setData({ search: this.search.bind(this) })
+    this.isCharge()
   },
 
+  // 判断是否会员
+  isCharge: function() {
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo && userInfo.config) {
+      if (userInfo.config.isCharge == 1 && userInfo.productFeature == null) {
+        this.getOpenId()
+      } else {
+        this.goodsDetail();
+      }
+    }
+  },
 
+  getOpenId: function(code) {
+    var that = this
+    var openId = wx.getStorageSync('users')
+
+    
+    var detailInfo = {
+      "openId": openId.openid,
+      "payDesc": "无支付宝.有微信。",
+      "payType": 4,
+      "phone": "",
+      "productId": that.data.productId,
+      "productName": that.data.productName,
+      "rice": that.data.price,
+      "agencyChannel": "miniProgram",
+      "appMarket": "minProgram",
+      "appName": "小雷达手机定位",
+      "appPackage": "wx.ecart.friendtrack", //应用包名，小程序现在的包名是wx.ecart.friendtrack
+      "appVersion": "2", //对应的版本号
+      "appVersionName": "1.0.1",
+      "application": "sjdw"
+    }
+    $http.askFor($api.payfor.createPay, detailInfo).then(res => {
+      if (res.success) {
+        var data = JSON.parse(res.data.orderVo.paymentData)
+        var timeStamp = data.timeStamp
+        var packages = data.package
+        var paySign = data.paySign
+        var nonceStr = data.nonceStr
+        var param = { "timeStamp": timeStamp, "package": packages, "paySign": paySign, "signType": "MD5", "nonceStr": nonceStr }
+        that.pay(param)
+      }
+    })
+  },
+  pay: function(param) {
+    var that = this
+    wx.requestPayment({
+      nonceStr: param.nonceStr,
+      package: param.package,
+      paySign: param.paySign,
+      signType: param.signType,
+      timeStamp: param.timeStamp,
+      success: function(res) {
+        wx.showToast({
+          title: '支付成功',
+          icon: 'success',
+          duration: 2000
+        })
+        that.onShow()
+      },
+      fail: function(res) {
+        console.log(res)
+      },
+      complete: function(res) {
+
+      }
+    })
+  },
+  goodsDetail: function() {
+    var that = this
+    var goods = []
+    $http.askFor($api.goods).then(result => {
+      if (result.code === 20000) {
+        var details = []
+        for (const data of result.data.list) {
+          details.push(data.id + '-' + data.productName + '-' + data.price + '元')
+        }
+        that.setData({
+          goods: details
+        })
+        wx.showActionSheet({
+          itemList: details,
+          success(res) {
+            var str = details[res.tapIndex].split('-')
+            that.setData({
+              productId: str[0],
+              productName: str[1],
+              price: parseInt(str[2])
+            })
+            that.getOpenId()
+          },
+          fail(res) {
+            console.log(res.errMsg)
+          }
+        })
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

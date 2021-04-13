@@ -26,23 +26,23 @@ Page({
     requestNumber: 0, // 好友请求数量
     friendList: [], // 定位好友列表
     applicationList: [{
-        id: 'weather',
-        title: '今日温度',
-        icon: '../../images/weather.png',
-        content: '',
-        path: 'weather'
-      }, {
         id: 'subway',
         title: '地铁',
         icon: '../../images/subway.png',
         content: '',
         bindtap: 'toSubway'
       }, {
-        id: 'COVID',
-        title: '疫情动态',
-        icon: '../../images/virus.png',
+        id: 'map',
+        title: '地图',
+        icon: '../../images/map.png',
         content: '',
-        bindtap: 'toCOVID'
+        bindtap: 'toMap'
+      }, {
+        id: 'route',
+        title: '路线',
+        icon: '../../images/map1.png',
+        content: '',
+        bindtap: 'toDirection'
       }
     ]
   },
@@ -57,10 +57,12 @@ Page({
   //取消按钮  
   cancel: function() {
     this.setData({ hiddenmodalput: true });
+    this.setData({ friendNumber: '' });
   },
   //确认  
   confirm: function(e) {
     this.setData({ hiddenmodalput: true });
+    this.setData({ friendNumber: '' });
     this.sendFriendRequest()
   },
 
@@ -92,6 +94,10 @@ Page({
     wx.navigateTo({ url: '../virus/virus' })
   },
 
+  // 查看地图
+  toMap: function() {
+    wx.switchTab({ url: '../map/map' })
+  },
   selectResult: function(e) {},
 
   // 跳转至家人页
@@ -162,7 +168,7 @@ Page({
   getUserInfo: async function() {
     return wx.getStorage({ key: 'userInfo' }).then(info => {
       this.setData({ userInfo: info.data })
-      this.login(info.data)
+      if (!info.data.isLogin) this.login(info.data)
       return info
     }).catch(() => { return null })
   },
@@ -353,7 +359,7 @@ Page({
     Object.assign(add, app.globalData.basicInfo)
     $http.askFor($api.findConfigAddress, add).then(res => {
       let userInfo = wx.getStorageSync('user');
-      userInfo.isCharge = res.data.configAddress.isCharge
+      userInfo.isCharge = parseInt(res.data.configAddress.isCharge)
       wx.setStorageSync('userInfo', userInfo);
     })
   },
@@ -369,7 +375,7 @@ Page({
     util.getLocation(res => {
       this.regeocoding(app.globalData.mapLocation)
       let list = this.data.applicationList
-      list.forEach(item => { if (['subway', 'COVID'].indexOf(item.id) > -1) item.content = res.result.address_component.city })
+      list.forEach(item => { item.content = res.result.address_component.city })
       this.setData({ applicationList: list })
     })
     this.getUserInfo().then(res => {

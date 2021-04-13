@@ -77,11 +77,11 @@ App({
     },
     mapLocation: {}, // 位置信息
     appInfo: {}, // 应用信息
-    wxUserInfo: null // 微信登录用户数据
-  },
-  secret: {
-    qqmap: 'ENQBZ-IJKKD-ACI4X-H5PXE-RUVZ5-75BVJ',
-    bmap: 'rkhRYeYjx1p63y2ZDFRK43sGyoiYbNmm'
+    wxUserInfo: null, // 微信登录用户数据
+    secret: {
+      qqmap: 'C6CBZ-GPH3G-QDUQN-IH4B6-5PHEJ-MJBB4',
+      bmap: 'rkhRYeYjx1p63y2ZDFRK43sGyoiYbNmm'
+    },
   },
   qqmapsdk: new QQMapWX({ key: 'ENQBZ-IJKKD-ACI4X-H5PXE-RUVZ5-75BVJ' }),
   BMap: new bMap.BMapWX({ ak: 'rkhRYeYjx1p63y2ZDFRK43sGyoiYbNmm' }),
