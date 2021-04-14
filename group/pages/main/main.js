@@ -43,8 +43,15 @@ Page({
         icon: '../../images/map1.png',
         content: '',
         bindtap: 'toDirection'
+      }, {
+        id: 'BMI',
+        title: 'BMI',
+        icon: '../../images/map1.png',
+        content: '',
+        bindtap: 'toBMI'
       }
-    ]
+    ],
+    isShowFriendPanel: false
   },
   //点击按钮弹出指定的hiddenmodalput弹出框  
   modalinput: function() {
@@ -92,6 +99,11 @@ Page({
   // 查看疫情动态
   toCOVID: function() {
     wx.navigateTo({ url: '../virus/virus' })
+  },
+  
+  // 查看BMI
+  toBMI: function() {
+    wx.navigateTo({ url: '../BMI/BMI' })
   },
 
   // 查看地图
@@ -229,12 +241,13 @@ Page({
   },
 
   // 判断是否会员
-  isCharge: function() {
+  isCharge: async function() {
     let userInfo = wx.getStorageSync('userInfo')
     let appInfo = wx.getStorageSync('appInfo')
     let isIOS = appInfo.system.toLowerCase().indexOf('ios') > -1
-    this.findConfig()
+    await this.findConfig()
     if (userInfo && userInfo.config) {
+      this.setData({ isShowFriendPanel: (parseInt(userInfo.config.isCharge) == 1 && !isIOS) || userInfo.productFeature !== null })
       return parseInt(userInfo.config.isCharge) == 1 && userInfo.productFeature == null && !isIOS
     } else {
       return false
@@ -354,11 +367,11 @@ Page({
     })
   },
   // 判断是否需要收费
-  findConfig: function() {
+  findConfig: async function() {
     let add = { "address": this.data.city }
     Object.assign(add, app.globalData.basicInfo)
-    $http.askFor($api.findConfigAddress, add).then(res => {
-      let userInfo = wx.getStorageSync('user');
+    return $http.askFor($api.findConfigAddress, add).then(res => {
+      let userInfo = wx.getStorageSync('userInfo');
       userInfo.isCharge = parseInt(res.data.configAddress.isCharge)
       wx.setStorageSync('userInfo', userInfo);
     })
@@ -382,6 +395,7 @@ Page({
       if (res === null) return
       this.getFriendList()
       this.getFriendRequest()
+      this.isCharge()
     })
   }
 })

@@ -1,7 +1,7 @@
 <!--pages/main/main.wxml-->
 <view class="page">
   <official-account></official-account>
-  <view class="panel">
+  <view class="panel" wx:if="{{isShowFriendPanel}}">
     <view class="panel-header">
       <text class="title"> 我的好友 </text>
       <text class="subtitle" bindtap="toFriends"> 更多 </text>

@@ -15,7 +15,9 @@
     "pages/direction/direction",
     "pages/virus/virus",
     "pages/goods/goods",
-    "pages/agreement/agreement"
+    "pages/agreement/agreement",
+    "pages/BMI",
+    "pages/BMI/BMI"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +28,8 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/main/main",
         "iconPath": "./images/note.png",
         "selectedIconPath": "./images/note.png",
