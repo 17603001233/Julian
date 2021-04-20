@@ -46,7 +46,7 @@ Page({
       }, {
         id: 'BMI',
         title: 'BMI',
-        icon: '../../images/map1.png',
+        icon: '../../images/dumbbell.png',
         content: '',
         bindtap: 'toBMI'
       }

@@ -4,6 +4,5 @@
     <mp-cell title="经度"><input name="longitude" placeholder="请输入经度" value="{{longitude}}"></input></mp-cell>
     <mp-cell title="纬度"><input name="latitude" placeholder="请输入纬度" value="{{latitude}}"></input></mp-cell>
     <mp-cell><button type="primary" form-type="submit"> 显示位置 </button></mp-cell>
-    <!-- <mp-cell><button type="primary" bindtap="toDirection"> 规划路线 </button></mp-cell> -->
   </form>
 </mp-form-page>
