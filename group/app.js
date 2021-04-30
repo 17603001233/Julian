@@ -25,7 +25,6 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log('code2session')
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         http.askFor(api.user.code2Session, {
           appid: this.globalData.accountInfo.appid,

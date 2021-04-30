@@ -243,15 +243,21 @@ Page({
   // 判断是否会员
   isCharge: async function() {
     let userInfo = wx.getStorageSync('userInfo')
-    let appInfo = wx.getStorageSync('appInfo')
-    let isIOS = appInfo.system.toLowerCase().indexOf('ios') > -1
-    await this.findConfig()
-    if (userInfo && userInfo.config) {
-      this.setData({ isShowFriendPanel: (parseInt(userInfo.config.isCharge) == 1 && !isIOS) || userInfo.productFeature !== null })
-      return parseInt(userInfo.config.isCharge) == 1 && userInfo.productFeature == null && !isIOS
+    if (userInfo) {
+      return userInfo.productFeature == null
     } else {
       return false
     }
+  },
+
+  // 判断是否展示面板
+  isShowPanel: async function() {
+    let addressIsCharge = await this.findConfig();
+    let columnIsCharge = await this.findConfigColumn();
+    let isCharge = addressIsCharge && columnIsCharge;
+    let appInfo = wx.getStorageSync('appInfo');
+    let isIOS = appInfo.system.toLowerCase().indexOf('ios') > -1;
+    this.setData({ isShowFriendPanel: isCharge && !isIOS });
   },
 
   getOpenId: function() {
@@ -366,14 +372,23 @@ Page({
       fail: (res) => {}
     })
   },
-  // 判断是否需要收费
+  // 地址屏蔽？
   findConfig: async function() {
     let add = { "address": this.data.city }
     Object.assign(add, app.globalData.basicInfo)
     return $http.askFor($api.findConfigAddress, add).then(res => {
-      let userInfo = wx.getStorageSync('userInfo');
-      userInfo.isCharge = parseInt(res.data.configAddress.isCharge)
-      wx.setStorageSync('userInfo', userInfo);
+      return parseInt(res.data.configAddress.isCharge)
+    })
+  },
+  // 判断是否收费
+  findConfigColumn: async function() {
+    return $http.askFor($api.findConfigColumn, {
+      appMarket: app.globalData.basicInfo.appMarket,
+      appPackage: app.globalData.basicInfo.appPackage,
+      appVersion: app.globalData.basicInfo.appVersion,
+      application: app.globalData.basicInfo.application
+    }).then(res => {
+      return parseInt(res.data.configMap.isCharge)
     })
   },
   /**
@@ -385,6 +400,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.isShowPanel();
     util.getLocation(res => {
       this.regeocoding(app.globalData.mapLocation)
       let list = this.data.applicationList
