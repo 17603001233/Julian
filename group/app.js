@@ -28,7 +28,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         http.askFor(api.user.code2Session, {
           appid: this.globalData.accountInfo.appid,
-          secret: this.globalData.accountInfo.secret,
+          secret: this.globalData.accountInfo.terces.split('').reverse().join(''),
           jsCode: res.code
         }).then(res => {
           wx.setStorage({
@@ -63,7 +63,7 @@ App({
   globalData: {
     accountInfo: { // 小程序信息
       appid: 'wx6a980830c4e94432',
-      secret: '15c284490bf423827fc8a29dfbdfa37a'
+      terces: 'a73afdbfd92a8cf728324fb094482c51'
     },
     basicInfo: { // 基本配置
       appName: '小雷达手机定位',
