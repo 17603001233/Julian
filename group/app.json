@@ -22,7 +22,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "好友追踪",
+    "navigationBarTitleText": "我的位置",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
