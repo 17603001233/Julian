@@ -1,0 +1,18 @@
+<!--pages/BMI/BMI.wxml-->
+<mp-form-page title="体脂检测" subtitle="身体质量指数" class="bmi">
+  <form>
+    <mp-cell title="身高">
+      <input name="height" data-inpval="height" placeholder="请输入身高" value="{{height}}" bindinput='bindAndSet'></input>
+      <text slot="footer">cm</text>
+    </mp-cell>
+    <mp-cell title="体重">
+      <input name="weight" data-inpval="weight" placeholder="请输入体重" value="{{weight}}" bindinput='bindAndSet'></input>
+      <text slot="footer">kg</text>
+    </mp-cell>
+    <!-- <mp-cell title="{{bmiNotice}}"></mp-cell> -->
+    <view slot="tips">{{bmiNotice}}</view>
+  </form>
+  <view slot="button">
+    <button class="weui-btn" type="primary" bindtap="submit"> 指数分析 </button>
+  </view>
+</mp-form-page>
