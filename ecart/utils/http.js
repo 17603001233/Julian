@@ -40,9 +40,9 @@ function request(url, data, token) {
       dataType: 'json',
       responseType: 'text',
       success: (res) => {
-        wx.hideLoading();
+        wx.hideLoading()
         if (res.statusCode === 401) return wx.navigateTo({ url: '/pages/login/login' })
-        if (res.data.code && res.data.code !== 20000) return wx.showModal({
+        if (res.data.code !== 20000) return wx.showModal({
           title: '错误提示',
           content: res.data.message || '未知错误',
           showCancel: false

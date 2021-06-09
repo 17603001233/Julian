@@ -1,0 +1,4 @@
+/* pages/BMI/BMI.wxss */
+.bmi .weui-cell__hd {
+  width: 100px;
+}

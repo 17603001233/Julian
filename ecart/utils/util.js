@@ -27,20 +27,18 @@ const getLocation = (cb) => {
         location: {
           latitude: location.latitude,
           longitude: location.longitude
-        },
-        success: (res) => {
+        }, success: (res) => {
           if (typeof cb === 'function') cb(res)
           let addParam = {
             address: res.result.address,
             lat: location.latitude + '',
             lon: location.longitude + ''
           }
-          if (res.message == 'query ok') $http.askFor($api.location.add, addParam).then((data) => {})
-        },
-        fail: (res) => {}
+          let userInfo = wx.getStorageSync('user');
+          if (res.message == 'query ok' && userInfo) $http.askFor($api.location.add, addParam).then((data) => {}) // 用户登录则上传位置信息
+        }, fail: (res) => {}
       });
-    },
-    complete: () => {}
+    }, complete: () => {}
   })
 }
 

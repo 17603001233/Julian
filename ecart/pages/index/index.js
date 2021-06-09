@@ -29,13 +29,11 @@ Page({
     wx.navigateTo({ url: `../../pages/${path}/${path}` })
   },
 
-  onShow: function () {
-    wx.getStorage({
-      key: 'userInfo',
-    }).then(info => {
+  onShow: function() {
+    wx.getStorage({ key: 'userInfo' }).then(info => {
       let userInfo = info.data
       this.setData({ 'userInfo.name': userInfo.username })
-    })
+    }).catch(error => {})
   },
 
   onLoad: function () {
@@ -57,12 +55,8 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          console.log(res)
           app.globalData.wxUserInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+          this.setData({ userInfo: res.userInfo, hasUserInfo: true })
         }
       })
     }

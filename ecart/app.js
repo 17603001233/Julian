@@ -14,7 +14,13 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 获取当前版本信息
-    wx.getSystemInfo({ success: res => { this.globalData.appInfo = res } })
+    wx.getSystemInfo({ success: res => {
+      wx.setStorage({
+        data: res,
+        key: 'appInfo',
+      })
+      this.globalData.appInfo = res
+    } })
 
     // 登录
     wx.login({
@@ -22,13 +28,12 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         http.askFor(api.user.code2Session,{
           appid: this.globalData.accountInfo.appid,
-          secret: this.globalData.accountInfo.secret,
+          secret: this.globalData.accountInfo.terces.split('').reverse().join(''),
           jsCode: res.code}).then(res => {
           wx.setStorage({
             data: res.data.map,
             key: 'users',
           })
-          // console.log(res)
         })
       }
     })
@@ -57,11 +62,13 @@ App({
   globalData: {
     accountInfo: { // 小程序信息
       appid: 'wxf5d185ee6c266044',
-      secret: 'a36a336f238b33cd783fb6914d74dca0'
+      terces: '0acd47d4196bf387dc33b832f633a63a'
     },
     basicInfo: { // 基本配置
+      appName: '小雷达手机定位',
       appPackage: 'wx.ecart.friendtrack',
-      appVersion: '1.0.0',
+      appVersion: '2',
+      appVersionName: '',
       agencyChannel: 'miniProgram',
       appMarket: 'miniProgram',
       application: 'sjdw'

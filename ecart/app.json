@@ -11,27 +11,32 @@
     "pages/friends/friends",
     "pages/direction/direction",
     "pages/weather/weather",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/BMI/BMI",
+    "pages/QR/QR"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "好友追踪",
+    "navigationBarTitleText": "我的位置",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/main/main",
         "iconPath": "./images/note.png",
         "selectedIconPath": "./images/note-selected.png",
         "text": "首页"
-      }, {
+      },
+      {
         "pagePath": "pages/map/map",
         "iconPath": "./images/map.png",
         "selectedIconPath": "./images/map-selected.png",
         "text": "地图"
-      }, {
+      },
+      {
         "pagePath": "pages/index/index",
         "iconPath": "./images/mine.png",
         "selectedIconPath": "./images/mine-selected.png",

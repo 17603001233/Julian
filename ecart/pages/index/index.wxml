@@ -37,5 +37,6 @@
   <text data-path="geocoding" bindtap="toPage"> geocoding </text>
   <text data-path="search" bindtap="toPage"> search </text>
   <text data-path="suggestion" bindtap="toPage"> suggestion </text> -->
-  <van-button class="logout-btn" size="large" bindtap="logout" form-type="submit" color="linear-gradient(to right, #F03C69, #EB893F)"> 退出登录 </van-button>
+  <van-button class="logout-btn" size="large" bindtap="logout" form-type="submit" color="linear-gradient(to right, #F03C69, #EB893F)" wx:if="{{userInfo.name}}"> 退出登录 </van-button>
+  <van-button class="logout-btn" size="large" bindtap="toPage" data-path="login" wx:else> 去登录 </van-button>
 </view>

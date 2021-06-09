@@ -1,0 +1,5 @@
+<!--pages/QR/QR.wxml-->
+<view class="panel-content">
+  <!-- <image src="{{QRCode}}"></image> -->
+  <web-view src="{{QRCode}}"></web-view>
+</view>
